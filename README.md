@@ -1,64 +1,41 @@
-```bash
-npm install react-sortablejs
-# or
-yarn add react-sortablejs
-```
+/* Table Styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
-Now, let's create a functional component for the draggable table in React:
+th, td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
 
-```jsx
-import React, { useState } from 'react';
-import Sortable from 'react-sortablejs';
+/* Header Styling */
+th {
+  background: #f4f4f4;
+  cursor: grab;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
 
-const DraggableTable = () => {
-  const [columns, setColumns] = useState(['Column 1', 'Column 2', 'Column 3']);
-  const [data, setData] = useState([
-    ['Data 1', 'Data 2', 'Data 3'],
-    // Add more rows as needed
-  ]);
+/* Hover Effects */
+th:hover {
+  background: #e0e0e0;
+}
 
-  const handleSort = (newOrder) => {
-    setColumns(newOrder);
-    setData((prevData) =>
-      prevData.map((row) => {
-        const newRow = [...row];
-        newOrder.forEach((columnIndex, index) => {
-          newRow[index] = row[columnIndex];
-        });
-        return newRow;
-      })
-    );
-  };
+/* Handle for Dragging */
+th:active {
+  cursor: grabbing;
+}
 
-  return (
-    <table>
-      <thead>
-        <tr>
-          <Sortable
-            items={columns}
-            onSort={handleSort}
-            options={{ handle: '.handle' }}
-          >
-            {columns.map((column, index) => (
-              <th key={index}>
-                {column}
-                <span className="handle">⋮</span>
-              </th>
-            ))}
-          </Sortable>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((row, rowIndex) => (
-          <tr key={rowIndex}>
-            {row.map((cell, cellIndex) => (
-              <td key={cellIndex}>{cell}</td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-};
+/* Row Data Styling */
+td {
+  background: #fff;
+}
 
-e
+td:hover {
+  background: #f9f9f9;
+}
+v
+  
+  
+ 
